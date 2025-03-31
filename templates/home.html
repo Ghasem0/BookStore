@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        {% if user.is_authenticated %}
+            <h1 class="mt-4 mb-3">Welcome {{ user.username }} </h1>
+            <a class="btn btn-primary " href="{% url 'books_list' %}">Books</a>
+            <a class="btn btn-primary" href="{% url 'book_create' %}">Create</a>
+        {% else %}
+            <a class="btn btn-outline-primary" href="{% url 'login' %}">Login</a> |
+            <a class="btn btn-outline-primary" href="{% url 'signup' %}">SignUp</a>
+        {% endif %}
+    </div>
+{% endblock content %}
