@@ -1,6 +1,6 @@
-{% load static %}
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load static %}
 <html lang="fa">
 <head>
 
@@ -13,6 +13,9 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block styles %}
+    
+    {% endblock styles %}
 
     <title>{% block title %}{% endblock title %}</title>
 
@@ -23,8 +26,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" dir="rtl">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="icons/book.png" alt="" height="30"
-                 class="d-inline-block align-text-top">
+            <img src="{% static 'icons/book.png' %}" height="30" class="d-inline-block align-text-top">
         </a>
         <a class="navbar-brand mx-3" href="#">کتاب یار</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -43,7 +45,9 @@
                 {{ user.username }} |
                 <form class="d-inline" action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-link text-light p-0 border-0 align-baseline text-decoration-none" value="خروج">
+                    <input type="submit"
+                           class="btn btn-link text-light p-0 border-0 align-baseline text-decoration-none"
+                           value="خروج">
                 </form>
             {% else %}
                 <a class="text-decoration-none text-light" href="{% url 'login' %}">ورود</a> |

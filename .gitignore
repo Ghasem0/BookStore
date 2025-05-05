@@ -1,5 +1,6 @@
 *.sqlite3
 .idea/
+media/books_cover/
 venv/
 __pycach__/
 front_code/
